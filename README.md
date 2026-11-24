@@ -26,15 +26,26 @@ Aplikasi desktop JavaFX untuk mengelola akun petugas, produk BBM, transaksi peng
 
 ## Database
 
-Buat database kosong bernama `pombensin`, lalu muat [skema PostgreSQL](database/pombensin_schema.sql):
+Repo menyediakan backup PostgreSQL bernama `pombensin.sql`. File ini berformat custom dari `pg_dump` dan berisi struktur serta data saat backup dibuat. Untuk menggunakannya, buat database kosong bernama `pombensin`, lalu restore dari terminal:
 
 ```powershell
-psql -d pombensin -v ON_ERROR_STOP=1 -f database/pombensin_schema.sql
+createdb -U postgres pombensin
+pg_restore -U postgres -d pombensin --no-owner --no-privileges pombensin.sql
 ```
 
-Buat `database/local.properties` dari `database/local.properties.example`, lalu isi username dan password PostgreSQL lokal. Jalankan aplikasi dari folder proyek agar file tersebut terbaca. Skema mencakup tabel dan relasi tanpa data dari database pengembangan.
+Sesuaikan `postgres` dengan username PostgreSQL lokal. Pastikan `pg_restore` tersedia melalui instalasi PostgreSQL.
 
-Untuk membuat akun Admin pertama, jalankan konfigurasi **Create First Admin** di VS Code dan ikuti prompt terminal. Setelah login, Admin bisa menambah akun dan produk melalui aplikasi.
+Aplikasi membaca pengaturan koneksi dari `database/local.properties` jika file itu tersedia. Buat folder `database` dan file tersebut dengan isi berikut, lalu ganti username dan password sesuai PostgreSQL lokal:
+
+```properties
+url=jdbc:postgresql://localhost:5432/pombensin
+user=postgres
+password=
+```
+
+Jika file konfigurasi belum dibuat, aplikasi memakai database `pombensin`, user `postgres`, dan password kosong.
+
+Untuk database baru tanpa akun, jalankan konfigurasi **Create First Admin** di VS Code dan ikuti prompt terminal. Setelah login, Admin bisa menambah akun dan produk dari aplikasi.
 
 ## Menjalankan aplikasi
 
