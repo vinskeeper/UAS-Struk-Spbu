@@ -54,7 +54,7 @@ public class UserController {
             if (p == null) dao.create(nameField.getText(), gender, birthdayPicker.getValue(), usernameField.getText(), passwordField.getText(), roleBox.getValue());
             else dao.update(p.getId(), nameField.getText(), gender, birthdayPicker.getValue(), usernameField.getText(), passwordField.getText(), roleBox.getValue());
             clear(); refresh();
-        } catch (SQLException e) { error("Akun petugas gagal disimpan", e.getMessage()); }
+        } catch (SQLException e) { error("Akun user gagal disimpan", e.getMessage()); }
     }
     @FXML private void clear() {
         petugasTable.getSelectionModel().clearSelection(); nameField.clear(); usernameField.clear();
@@ -64,7 +64,7 @@ public class UserController {
     @FXML private void deactivate() { setStatus(false); }
     @FXML private void activate() { setStatus(true); }
     private void setStatus(boolean active) {
-        User p=petugasTable.getSelectionModel().getSelectedItem(); if(p==null){warn("Pilih akun petugas terlebih dahulu.");return;}
+        User p=petugasTable.getSelectionModel().getSelectedItem(); if(p==null){warn("Pilih akun user terlebih dahulu.");return;}
         if(!active && p.getUsername().equalsIgnoreCase(activeUsername)){warn("Akun yang sedang digunakan tidak bisa dinonaktifkan.");return;}
         try{dao.setActive(p.getId(),active);refresh();}catch(SQLException e){error("Status akun gagal diubah",e.getMessage());}
     }
@@ -75,7 +75,7 @@ public class UserController {
         if(a.showAndWait().filter(ButtonType.OK::equals).isEmpty())return;
         try{dao.delete(p.getId());refresh();clear();}catch(SQLException e){error("Akun gagal dihapus",e.getMessage());}
     }
-    private void refresh(){try{petugasTable.setItems(FXCollections.observableArrayList(dao.getAll()));}catch(SQLException e){error("Data petugas tidak dapat dimuat",e.getMessage());}}
+    private void refresh(){try{petugasTable.setItems(FXCollections.observableArrayList(dao.getAll()));}catch(SQLException e){error("Data user tidak dapat dimuat",e.getMessage());}}
     private void warn(String s){new Alert(Alert.AlertType.WARNING,s).showAndWait();}
     private void error(String t,String s){Alert a=new Alert(Alert.AlertType.ERROR,s);a.setTitle(t);a.showAndWait();}
 }

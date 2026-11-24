@@ -70,7 +70,7 @@ public class DashboardController {
         if (!admin) mainTabs.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
         if (admin) {
             mainTabs.getTabs().setAll(
-                    createMainTab("Petugas", buildStaffScreen()),
+                    createMainTab("Users", buildStaffScreen()),
                     createMainTab("Produk BBM", buildProductScreen()),
                     createMainTab("Transaksi", buildSalesScreen()));
         } else {
@@ -97,7 +97,7 @@ public class DashboardController {
     }
 
     @FXML private void showPeople(ActionEvent event) {
-        selectTab("Petugas");
+        selectTab("Users");
     }
 
     private Tab createMainTab(String title, Node content) {
@@ -132,7 +132,7 @@ public class DashboardController {
             }
         }
         Node content = switch (title) {
-            case "Petugas" -> buildStaffScreen();
+            case "Users" -> buildStaffScreen();
             case "Produk BBM" -> buildProductScreen();
             default -> buildSalesScreen();
         };
@@ -359,7 +359,7 @@ public class DashboardController {
             controller.setActiveUsername(currentUsername);
             return view;
         } catch (IOException e) {
-            showError("Gagal membuka halaman petugas", e.getMessage());
+            showError("Gagal membuka halaman Users", e.getMessage());
             return new VBox();
         }
     }
