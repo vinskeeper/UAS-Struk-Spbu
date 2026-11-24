@@ -22,30 +22,34 @@ Aplikasi desktop JavaFX untuk mengelola akun petugas, produk BBM, transaksi peng
 - JavaFX SDK di `C:\javafx-sdk\lib`
 - jBCrypt di `C:\javafx-sdk\lib\jbcrypt-0.4.jar`
 - PostgreSQL JDBC driver di `lib/postgresql-42.7.14.jar`
-- Database PostgreSQL `pombensin` yang sudah disiapkan
+- PostgreSQL dengan database `pombensin` (lihat bagian Database)
 
 ## Database
 
-Repo menyediakan backup PostgreSQL bernama `pombensin.sql`. File ini berformat custom dari `pg_dump` dan berisi struktur serta data saat backup dibuat. Untuk menggunakannya, buat database kosong bernama `pombensin`, lalu restore dari terminal:
+Repo menyediakan backup PostgreSQL `pombensin.sql` dalam format custom `pg_dump`. Backup ini berisi skema dan data, dan dibuat dari database `pombensin`. Aplikasi terhubung ke `localhost:5432/pombensin` menggunakan user `vinsky` dan password `1`, sesuai nilai di `src/main/java/dao/PostgreSQLConnection.java`.
+
+Untuk menyiapkan database baru, pastikan role `vinsky` tersedia dengan password `1`. Jika belum ada, buat role dan database kosong:
 
 ```powershell
-createdb -U postgres pombensin
-pg_restore -U postgres -d pombensin --no-owner --no-privileges pombensin.sql
+psql -U postgres -c "CREATE ROLE vinsky WITH LOGIN PASSWORD '1';"
+createdb -U postgres -O vinsky pombensin
 ```
 
-Sesuaikan `postgres` dengan username PostgreSQL lokal. Pastikan `pg_restore` tersedia melalui instalasi PostgreSQL.
+Jika role `vinsky` sudah ada, atur password-nya agar sesuai dengan koneksi aplikasi:
 
-Aplikasi membaca pengaturan koneksi dari `database/local.properties` jika file itu tersedia. Buat folder `database` dan file tersebut dengan isi berikut, lalu ganti username dan password sesuai PostgreSQL lokal:
-
-```properties
-url=jdbc:postgresql://localhost:5432/pombensin
-user=postgres
-password=
+```powershell
+psql -U postgres -c "ALTER ROLE vinsky WITH LOGIN PASSWORD '1';"
 ```
 
-Jika file konfigurasi belum dibuat, aplikasi memakai database `pombensin`, user `postgres`, dan password kosong.
+Restore backup ke database kosong sebagai `vinsky`:
 
-Untuk database baru tanpa akun, jalankan konfigurasi **Create First Admin** di VS Code dan ikuti prompt terminal. Setelah login, Admin bisa menambah akun dan produk dari aplikasi.
+```powershell
+pg_restore -U vinsky -d pombensin --no-owner --no-privileges pombensin.sql
+```
+
+Perintah pertama hanya dijalankan jika role belum ada; kalau sudah ada, gunakan perintah `ALTER ROLE`. Jangan jalankan `createdb` jika database `pombensin` sudah ada. Pastikan perintah `psql`, `createdb`, dan `pg_restore` tersedia dari instalasi PostgreSQL. Jika username atau password lokal berbeda, ubah nilai `URL`, `USER`, dan `PASSWORD` pada `PostgreSQLConnection.java`.
+
+Backup memuat data akun yang ada saat backup dibuat. Setelah restore, gunakan akun yang tersimpan di database tersebut untuk login.
 
 ## Menjalankan aplikasi
 
