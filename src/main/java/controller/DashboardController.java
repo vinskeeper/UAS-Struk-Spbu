@@ -147,7 +147,7 @@ public class DashboardController {
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            stage.setTitle("POM Bensin — Login");
+            stage.setTitle("UAS Struk SPBU — Login");
             stage.setScene(new Scene(root, 470, 570));
             stage.setMinWidth(440);
             stage.setMinHeight(520);

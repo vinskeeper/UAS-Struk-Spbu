@@ -1,4 +1,4 @@
-# POM Bensin
+# UAS Struk SPBU
 
 Aplikasi desktop JavaFX untuk mengelola akun petugas, produk BBM, transaksi pengisian, riwayat, dan invoice.
 

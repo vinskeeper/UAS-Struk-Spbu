@@ -55,7 +55,7 @@ public class LoginController {
 
                 Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                 Stage dashboardStage = new Stage();
-                dashboardStage.setTitle("POM Bensin");
+                dashboardStage.setTitle("UAS Struk SPBU");
                 dashboardStage.setScene(new Scene(root, 1180, 760));
                 dashboardStage.show();
                 currentStage.close();

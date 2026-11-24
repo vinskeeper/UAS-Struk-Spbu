@@ -13,7 +13,7 @@ public class Main extends Application {
         loadApplicationFonts();
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("/fxml/login.fxml"));
-        primaryStage.setTitle("POM Bensin — Login");
+        primaryStage.setTitle("UAS Struk SPBU — Login");
         primaryStage.setScene(new Scene(loader.load(), 470, 570));
         primaryStage.setMinWidth(440);
         primaryStage.setMinHeight(520);
