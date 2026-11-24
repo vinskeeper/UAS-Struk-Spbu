@@ -1,28 +1,20 @@
 package dao;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class PostgreSQLConnection {
-    private static final String DEFAULT_URL = "jdbc:postgresql://localhost:5432/pombensin";
+    private static final String URL = "jdbc:postgresql://localhost:5432/oop";
+    private static final String USER = "vinsky";
+    private static final String PASSWORD = "1";
 
     public static Connection getConnection() throws SQLException {
-        Properties config = new Properties();
-        Path localConfig = Path.of("database", "local.properties");
-        if (Files.exists(localConfig)) {
-            try (var reader = Files.newBufferedReader(localConfig)) {
-                config.load(reader);
-            } catch (IOException e) {
-                throw new SQLException("Konfigurasi PostgreSQL lokal tidak dapat dibaca.", e);
-            }
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("PostgreSQL JDBC Driver not found.", e);
         }
-        String url = config.getProperty("url", DEFAULT_URL);
-        return DriverManager.getConnection(url, config.getProperty("user", "postgres"),
-                config.getProperty("password", ""));
+        return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 }
