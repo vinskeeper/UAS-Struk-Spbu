@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "App",
+      "cwd": "${workspaceFolder}",
+      "classPaths": [
+        "${env:LOCALAPPDATA}/POMBensin-UAS/bin",
+        "${env:LOCALAPPDATA}/POMBensin-UAS/src/main/resources",
+        "${env:LOCALAPPDATA}/POMBensin-UAS/lib/postgresql-42.7.14.jar",
+        "C:/javafx-sdk/lib/jbcrypt-0.4.jar"
+      ],
+      "shortenCommandLine": "none",
+      "vmArgs": "--module-path \"C:/javafx-sdk/lib\" --add-modules javafx.controls,javafx.fxml,javafx.web --enable-native-access=javafx.graphics"
+    },
+    {
+      "type": "java",
+      "name": "App (workspace biasa)",
+      "request": "launch",
+      "mainClass": "App",
+      "cwd": "${workspaceFolder}",
+      "classPaths": [
+        "$Auto"
+      ],
+      "shortenCommandLine": "none",
+      "vmArgs": "--module-path \"C:/javafx-sdk/lib\" --add-modules javafx.controls,javafx.fxml,javafx.web --enable-native-access=javafx.graphics"
+    },
+    {
+      "type": "java",
+      "name": "Create First Admin",
+      "request": "launch",
+      "mainClass": "app.CreateFirstAdmin",
+      "cwd": "${workspaceFolder}",
+      "classPaths": [
+        "$Auto"
+      ],
+      "shortenCommandLine": "none",
+      "vmArgs": "--module-path \"C:/javafx-sdk/lib\" --add-modules javafx.controls,javafx.fxml,javafx.web --enable-native-access=javafx.graphics",
+      "console": "integratedTerminal"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="14" styleClass="page-root" stylesheets="@../css/style.css"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.UserController">
+    <padding><Insets top="24" right="26" bottom="24" left="26"/></padding>
+    <Label text="Akun Petugas" styleClass="page-title"/>
+    <Label text="Daftarkan dan kelola akun petugas yang dapat masuk ke aplikasi." styleClass="page-subtitle"/>
+    <VBox spacing="12" styleClass="content-card">
+        <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+        <Label fx:id="selectionLabel" text="Pilih petugas untuk mengubah data. Password tidak ditampilkan."/>
+        <GridPane hgap="12" vgap="10">
+            <Label text="Nama" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="field-label"/>
+            <TextField fx:id="nameField" promptText="Nama lengkap petugas" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Username" GridPane.rowIndex="0" GridPane.columnIndex="2" styleClass="field-label"/>
+            <TextField fx:id="usernameField" promptText="Username untuk login" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="Gender" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="field-label"/>
+            <ComboBox fx:id="genderBox" promptText="Pilih gender" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Tanggal lahir" GridPane.rowIndex="1" GridPane.columnIndex="2" styleClass="field-label"/>
+            <DatePicker fx:id="birthdayPicker" promptText="Opsional" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+            <Label text="Role" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="field-label"/>
+            <ComboBox fx:id="roleBox" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+            <Label text="Password" GridPane.rowIndex="3" GridPane.columnIndex="0" styleClass="field-label"/>
+            <PasswordField fx:id="passwordField" promptText="Password akun baru" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+            <Label text="Wajib untuk akun baru; kosongkan jika tidak ingin mengganti password." wrapText="true" styleClass="page-subtitle" GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2"/>
+        </GridPane>
+        <HBox spacing="8">
+            <Button fx:id="saveButton" text="Tambah Akun" onAction="#save" styleClass="button-primary"/>
+            <Button text="Bersihkan Form" onAction="#clear" styleClass="button-secondary"/>
+            <Button text="Nonaktifkan Akun" onAction="#deactivate" styleClass="button-secondary"/>
+            <Button text="Aktifkan Akun" onAction="#activate" styleClass="button-secondary"/>
+            <Button text="Hapus Akun" onAction="#delete" styleClass="button-secondary,button-danger"/>
+        </HBox>
+    </VBox>
+    <TableView fx:id="petugasTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Nama" prefWidth="220"/>
+            <TableColumn fx:id="usernameColumn" text="Username" prefWidth="160"/>
+            <TableColumn fx:id="roleColumn" text="Role" prefWidth="120"/>
+            <TableColumn fx:id="genderColumn" text="Gender" prefWidth="120"/>
+            <TableColumn fx:id="birthdayColumn" text="Tanggal Lahir" prefWidth="160"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+        </columns>
+    </TableView>
+</VBox>

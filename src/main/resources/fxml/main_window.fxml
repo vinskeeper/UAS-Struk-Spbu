@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<HBox prefHeight="760.0" prefWidth="1180.0" stylesheets="@../css/style.css"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.DashboardController">
+    <children>
+        <VBox prefWidth="230.0" spacing="12.0" styleClass="sidebar">
+            <padding><Insets top="28.0" right="18.0" bottom="22.0" left="18.0"/></padding>
+            <children>
+                <Label text="POM BENSIN" styleClass="brand-title"/>
+                <Label text="Sistem Transaksi BBM" styleClass="brand-subtitle"/>
+                <Separator styleClass="sidebar-separator"/>
+                <Button fx:id="peopleButton" text="Petugas" maxWidth="Infinity" onAction="#showPeople" styleClass="nav-button"/>
+                <Button fx:id="productsButton" text="Produk BBM" maxWidth="Infinity" onAction="#showProduk" styleClass="nav-button"/>
+                <Button text="Transaksi" maxWidth="Infinity" onAction="#showTransaksi" styleClass="nav-button"/>
+                <Region VBox.vgrow="ALWAYS"/>
+                <Separator styleClass="sidebar-separator"/>
+                <Label fx:id="loggedUser" text="" wrapText="true" styleClass="logged-user"/>
+                <Button text="Keluar" maxWidth="Infinity" onAction="#logout" styleClass="logout-button"/>
+            </children>
+        </VBox>
+        <TabPane fx:id="mainTabs" HBox.hgrow="ALWAYS" styleClass="main-tabs" tabClosingPolicy="ALL_TABS"/>
+    </children>
+</HBox>

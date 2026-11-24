@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="16" styleClass="page-root">
+    <padding><Insets top="28" right="28" bottom="28" left="28"/></padding>
+    <Label text="Transaksi Baru" styleClass="page-title"/>
+    <Label text="Catat pengisian BBM dan buat struk pelanggan." styleClass="page-subtitle"/>
+    <VBox spacing="16" styleClass="content-card">
+        <padding><Insets top="22" right="22" bottom="22" left="22"/></padding>
+        <GridPane hgap="16" vgap="14">
+            <Label text="Petugas" styleClass="field-label"/>
+            <Label fx:id="attendantLabel" styleClass="readonly-value" GridPane.columnIndex="1"/>
+            <Label text="Nomor kendaraan" styleClass="field-label" GridPane.rowIndex="1"/>
+            <TextField fx:id="vehicleField" promptText="Contoh: B 1234 ABC" prefWidth="420" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+            <Label text="Produk BBM" styleClass="field-label" GridPane.rowIndex="2"/>
+            <ComboBox fx:id="productBox" prefWidth="420" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+            <Label text="Jumlah liter" styleClass="field-label" GridPane.rowIndex="3"/>
+            <TextField fx:id="litersField" promptText="Contoh: 10 atau 2,5" prefWidth="420" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+            <Label text="Pembayaran" styleClass="field-label" GridPane.rowIndex="4"/>
+            <ComboBox fx:id="paymentBox" prefWidth="420" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+            <Label fx:id="detailLabel" text="Detail pembayaran" styleClass="field-label" visible="false" managed="false" GridPane.rowIndex="5"/>
+            <TextField fx:id="detailField" prefWidth="420" visible="false" managed="false" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            <Label fx:id="cashLabel" text="Uang diterima" styleClass="field-label" GridPane.rowIndex="6"/>
+            <TextField fx:id="cashField" promptText="Masukkan nominal tanpa pemisah ribuan" prefWidth="420" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+        </GridPane>
+        <GridPane hgap="24" vgap="8" styleClass="transaction-summary">
+            <Label text="Total pembayaran" styleClass="field-label, total-label"/>
+            <Label fx:id="totalValue" styleClass="total-value" GridPane.columnIndex="1"/>
+            <Label fx:id="changeSummaryLabel" text="Kembalian" styleClass="field-label, change-label" GridPane.rowIndex="1"/>
+            <Label fx:id="changeValue" styleClass="change-value" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        </GridPane>
+        <Button fx:id="submit" text="Simpan Transaksi &amp; Lihat Struk" styleClass="button-primary"/>
+    </VBox>
+</VBox>

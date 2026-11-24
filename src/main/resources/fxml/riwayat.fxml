@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" spacing="16" styleClass="page-root">
+    <padding><Insets top="28" right="28" bottom="28" left="28"/></padding>
+    <Label text="Riwayat Transaksi" styleClass="page-title"/>
+    <Label text="Cari transaksi berdasarkan nomor invoice atau nomor kendaraan." styleClass="page-subtitle"/>
+    <HBox spacing="10">
+        <TextField fx:id="search" promptText="Cari invoice / kendaraan" HBox.hgrow="ALWAYS"/>
+        <Button fx:id="find" text="Cari" styleClass="button-secondary"/>
+        <Button fx:id="reload" text="Muat Ulang" styleClass="button-secondary"/>
+    </HBox>
+    <TableView fx:id="table">
+        <placeholder><Label text="Transaksi belum ada. Buat transaksi baru untuk mulai mencatat."/></placeholder>
+    </TableView>
+    <HBox spacing="10">
+        <Button fx:id="receipt" text="Buka Struk" styleClass="button-primary"/>
+        <Button fx:id="delete" text="Hapus Transaksi" styleClass="button-secondary, button-danger"/>
+    </HBox>
+</VBox>

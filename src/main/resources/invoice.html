@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Invoice Pengisian BBM</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 28px; background: #f3f5f6; color: #333; font-family: Arial, Helvetica, sans-serif; }
+        .invoice-box { max-width: 980px; min-height: 530px; margin: 0 auto; padding: 42px; background: #fff; border: 1px solid #e8e8e8; box-shadow: 0 2px 14px rgba(0,0,0,.12); font-size: 16px; line-height: 1.55; }
+        .header { display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; margin-bottom: 42px; }
+        .title { color: #444; font-size: 48px; line-height: 1; font-weight: 700; letter-spacing: .5px; }
+        .details { text-align: right; white-space: nowrap; }
+        .company { margin-bottom: 28px; }
+        .company div { margin: 3px 0; }
+        table { width: 100%; border-collapse: collapse; margin-top: 18px; }
+        thead th { padding: 12px; background: #f5f6f7; border-bottom: 2px solid #d9d9d9; text-align: left; }
+        tbody td { padding: 11px 12px; border-bottom: 1px solid #e7e7e7; }
+        .right { text-align: right; }
+        .total-row td { border-top: 2px solid #555; font-weight: 700; }
+        .payment { width: 55%; margin: 24px 0 0 auto; }
+        .payment td { padding: 5px 8px; border: 0; }
+        .payment td:first-child { color: #555; }
+        .payment .grand-total td { padding-top: 12px; border-top: 1px solid #bbb; font-weight: 700; }
+        .footer { margin-top: 36px; padding-top: 18px; border-top: 1px solid #e7e7e7; color: #68736d; text-align: center; }
+        @media print { body { padding: 0; background: #fff; } .invoice-box { max-width: none; min-height: 0; border: 0; box-shadow: none; padding: 12mm; } }
+        @media (max-width: 650px) { body { padding: 10px; } .invoice-box { padding: 22px; } .header { display: block; } .details { margin-top: 18px; text-align: left; } .title { font-size: 38px; } .payment { width: 100%; } table { font-size: 13px; } }
+    </style>
+</head>
+<body>
+    <main class="invoice-box">
+        <header class="header">
+            <div class="title">INVOICE</div>
+            <div class="details">
+                <div><strong>Invoice #:</strong> {{invoiceNumber}}</div>
+                <div><strong>Tanggal:</strong> {{date}}</div>
+            </div>
+        </header>
+        <section class="company">
+            <div><strong>Petugas:</strong> {{attendant}}</div>
+            <div><strong>No. Kendaraan:</strong> {{vehicle}}</div>
+        </section>
+        <table>
+            <thead>
+                <tr><th>Rincian BBM</th><th class="right">Jumlah</th><th class="right">Harga/Liter</th><th class="right">Subtotal</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>{{product}}</td><td class="right">{{quantity}}</td><td class="right">{{unitPrice}}</td><td class="right">{{total}}</td></tr>
+                <tr class="total-row"><td colspan="3">Total</td><td class="right">{{total}}</td></tr>
+            </tbody>
+        </table>
+        <table class="payment"><tbody>{{paymentRows}}</tbody></table>
+        <footer class="footer">Terima kasih telah mengisi BBM di POM BENSIN. Hati-hati di jalan!</footer>
+    </main>
+</body>
+</html>

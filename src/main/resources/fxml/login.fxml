@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane stylesheets="@../css/style.css"
+           xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="controller.LoginController">
+    <children>
+        <VBox alignment="CENTER_LEFT" maxWidth="390.0" maxHeight="510.0" spacing="20.0" styleClass="login-container">
+            <padding><Insets top="34.0" right="36.0" bottom="34.0" left="36.0"/></padding>
+            <children>
+                <VBox spacing="5.0">
+                    <children>
+                        <Label text="Selamat Datang" styleClass="login-title"/>
+                        <Label text="Masuk sebagai Admin atau Petugas." styleClass="login-subtitle" wrapText="true"/>
+                    </children>
+                </VBox>
+
+                <VBox spacing="14.0" styleClass="login-fields">
+                    <children>
+                        <VBox spacing="7.0">
+                            <children>
+                                <Label text="Username" styleClass="field-label"/>
+                                <TextField fx:id="usernameField" promptText="Masukkan username"/>
+                            </children>
+                        </VBox>
+                        <VBox spacing="7.0">
+                            <children>
+                                <Label text="Password" styleClass="field-label"/>
+                                <PasswordField fx:id="passwordField" promptText="Masukkan password"/>
+                            </children>
+                        </VBox>
+                    </children>
+                </VBox>
+
+                <Button text="Masuk" onAction="#handleLogin" styleClass="login-submit" maxWidth="Infinity"/>
+                <Label fx:id="errorLabel" styleClass="login-error" wrapText="true" maxWidth="Infinity"/>
+            </children>
+        </VBox>
+    </children>
+</StackPane>

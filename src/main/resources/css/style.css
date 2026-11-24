@@ -1,0 +1,413 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 13px;
+    -fx-text-fill: #26352f;
+    -fx-background-color: linear-gradient(to bottom right, #e8f0ec, #f5f7f5 58%, #edf2ef);
+
+    /* Ganti warna fokus biru bawaan JavaFX jadi hijau tema */
+    -fx-focus-color: #5c9c80;
+    -fx-faint-focus-color: rgba(92, 156, 128, 0.18);
+}
+
+/* ---------- Login / Welcome ---------- */
+.login-container, .welcome-container {
+    -fx-background-color: rgba(255, 255, 255, 0.78);
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(255, 255, 255, 0.95);
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(25, 54, 43, 0.13), 26, 0.18, 0, 8);
+}
+
+.login-title {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-text-fill: #203d31;
+    -fx-font-size: 25px;
+    -fx-font-weight: bold;
+}
+
+.login-subtitle {
+    -fx-text-fill: #718078;
+    -fx-font-size: 13px;
+}
+
+.login-submit {
+    -fx-background-color: linear-gradient(to bottom right, #348968, #247455);
+    -fx-text-fill: white;
+    -fx-min-height: 44px;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 11px;
+    -fx-cursor: hand;
+}
+
+.login-submit:hover {
+    -fx-background-color: linear-gradient(to bottom right, #3d9774, #2c8060);
+}
+
+.login-error {
+    -fx-alignment: CENTER;
+    -fx-text-alignment: CENTER;
+    -fx-text-fill: #b44444;
+}
+
+/* ---------- Input ---------- */
+.text-field, .password-field, .combo-box {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-border-color: #d8e2dc;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 9px 12px;
+    -fx-text-fill: #24362e;
+    -fx-prompt-text-fill: #98a69f;
+}
+
+/* DatePicker: pembungkus luar yang membawa border, kotak teks di dalam dibuat polos
+   supaya tidak tampak "kotak di dalam kotak" */
+.date-picker {
+    -fx-background-color: rgba(255, 255, 255, 0.9);
+    -fx-border-color: #d8e2dc;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-padding: 0;
+}
+
+.date-picker > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-effect: none;
+    -fx-padding: 9px 12px;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 10px 10px 0;
+    -fx-padding: 0 10px;
+}
+
+.text-field:focused, .password-field:focused, .date-picker:focused,
+.combo-box:focused, .date-picker:showing, .combo-box:showing {
+    -fx-border-color: #5c9c80;
+    -fx-effect: dropshadow(gaussian, rgba(61, 133, 101, 0.15), 9, 0.15, 0, 1);
+}
+
+/* ---------- Tombol ---------- */
+.button-primary {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-background-color: linear-gradient(to bottom right, #348968, #247455);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 11px 24px;
+    -fx-background-radius: 11px;
+    -fx-cursor: hand;
+}
+
+.button-primary:hover {
+    -fx-background-color: linear-gradient(to bottom right, #3d9774, #2c8060);
+    -fx-effect: dropshadow(gaussian, rgba(28, 91, 65, 0.2), 12, 0.16, 0, 3);
+}
+
+.button-secondary {
+    -fx-background-color: rgba(255, 255, 255, 0.68);
+    -fx-border-color: rgba(115, 139, 126, 0.25);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+    -fx-text-fill: #34483e;
+    -fx-padding: 9px 16px;
+    -fx-cursor: hand;
+}
+
+.button-secondary:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.95);
+    -fx-border-color: #afc8ba;
+}
+
+/* Tombol hapus: pakai di samping .button-secondary, mis. styleClass="button-secondary, button-danger" */
+.button-danger {
+    -fx-text-fill: #b44444;
+    -fx-border-color: rgba(180, 68, 68, 0.35);
+}
+
+/* Specificity keeps destructive actions on the same custom button skin. */
+.button-secondary.button-danger {
+    -fx-background-color: rgba(255, 255, 255, 0.78);
+    -fx-background-radius: 10px;
+    -fx-border-color: rgba(180, 68, 68, 0.35);
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-padding: 9px 16px;
+    -fx-text-fill: #b44444;
+}
+
+.button-danger:hover {
+    -fx-background-color: rgba(180, 68, 68, 0.08);
+    -fx-border-color: #b44444;
+}
+
+.button-secondary.button-danger:hover {
+    -fx-background-color: rgba(180, 68, 68, 0.08);
+    -fx-border-color: #b44444;
+}
+
+/* Tombol nonaktif (mis. Aktifkan saat akun sudah aktif) */
+.button-primary:disabled, .button-secondary:disabled {
+    -fx-opacity: 0.45;
+    -fx-cursor: default;
+}
+
+.error-text {
+    -fx-text-fill: #b44444;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    -fx-background-color: linear-gradient(to bottom, #203e33, #18342b);
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-width: 0 1px 0 0;
+}
+
+.brand-title {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.brand-subtitle {
+    -fx-text-fill: #c0d0c8;
+    -fx-font-size: 12px;
+}
+
+.sidebar-separator .line {
+    -fx-border-color: rgba(225, 241, 232, 0.22);
+}
+
+.nav-button, .logout-button {
+    -fx-alignment: CENTER_LEFT;
+    -fx-background-color: transparent;
+    -fx-text-fill: #eaf2ed;
+    -fx-font-size: 13px;
+    -fx-padding: 11px 13px;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.12);
+}
+
+.logout-button {
+    -fx-background-color: rgba(255, 255, 255, 0.13);
+    -fx-border-color: rgba(255, 255, 255, 0.17);
+    -fx-border-radius: 10px;
+}
+
+.logout-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+}
+
+.logged-user {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 2px;
+}
+
+/* ---------- Tab ---------- */
+.workspace, .page-root, .main-tabs, .main-tabs > .tab-content-area {
+    -fx-background-color: transparent;
+}
+
+.main-tabs > .tab-header-area {
+    -fx-background-color: rgba(240, 245, 242, 0.82);
+    -fx-padding: 9px 12px 0 12px;
+    -fx-border-color: rgba(255, 255, 255, 0.7);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.main-tabs > .tab-header-area > .tab-header-background {
+    -fx-background-color: transparent;
+}
+
+.main-tabs .tab {
+    -fx-background-color: rgba(224, 232, 227, 0.65);
+    -fx-background-radius: 11px 11px 0 0;
+    -fx-border-color: transparent;
+    -fx-border-radius: 11px 11px 0 0;
+    -fx-padding: 8px 12px;
+}
+
+.main-tabs .tab:selected {
+    -fx-background-color: rgba(255, 255, 255, 0.86);
+    -fx-border-color: rgba(255, 255, 255, 0.95);
+    -fx-effect: dropshadow(gaussian, rgba(30, 61, 46, 0.08), 9, 0.12, 0, -1);
+}
+
+.main-tabs .tab-label {
+    -fx-text-fill: #46574e;
+    -fx-font-size: 13px;
+}
+
+.main-tabs .tab:selected .tab-label {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-text-fill: #1f4937;
+    -fx-font-weight: bold;
+}
+
+/* Kotak fokus di tab dibuat tipis dan hijau */
+.main-tabs .tab .focus-indicator {
+    -fx-border-color: transparent;
+}
+
+.main-tabs:focused .tab:selected .focus-indicator {
+    -fx-border-color: rgba(92, 156, 128, 0.6);
+    -fx-border-radius: 8px;
+    -fx-border-width: 1px;
+}
+
+/* ---------- Judul halaman & kartu ---------- */
+.page-title {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d3d30;
+}
+
+.page-subtitle {
+    -fx-text-fill: #708077;
+    -fx-font-size: 13px;
+}
+
+.content-card {
+    -fx-background-color: rgba(255, 255, 255, 0.76);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(255, 255, 255, 0.92);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(29, 61, 47, 0.08), 20, 0.14, 0, 5);
+}
+
+.transaction-summary {
+    -fx-background-color: rgba(231, 239, 234, 0.68);
+    -fx-background-radius: 12px;
+    -fx-padding: 14px 16px;
+}
+
+/* Label form: biasa (tidak tebal) supaya isian yang menonjol */
+.field-label {
+    -fx-text-fill: #566a5f;
+    -fx-font-size: 13px;
+}
+
+/* Nilai read-only (mis. nama petugas) */
+.readonly-value {
+    -fx-text-fill: #263a30;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 0;
+}
+
+/* ---------- Ringkasan total (halaman Transaksi Baru) ---------- */
+.total-label {
+    -fx-text-fill: #566a5f;
+    -fx-font-size: 14px;
+}
+
+.total-value {
+    -fx-font-family: "CooperMdBT-Regular";
+    -fx-text-fill: #1f5d46;
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+}
+
+.change-label, .change-value {
+    -fx-text-fill: #708077;
+    -fx-font-size: 13px;
+}
+
+.info-banner {
+    -fx-background-color: rgba(255, 248, 224, 0.88);
+    -fx-border-color: rgba(215, 189, 111, 0.38);
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-text-fill: #705c25;
+    -fx-padding: 12px 16px;
+}
+
+/* ---------- Tabel ---------- */
+.table-view {
+    -fx-background-color: rgba(255, 255, 255, 0.78);
+    -fx-background-radius: 14px;
+    -fx-border-color: rgba(255, 255, 255, 0.9);
+    -fx-border-radius: 14px;
+    -fx-padding: 3px;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: rgba(231, 239, 234, 0.9);
+    -fx-background-radius: 11px 11px 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #dce6df transparent;
+    -fx-padding: 4px 0;
+}
+
+.table-view .column-header .label {
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: #345342;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER-LEFT;
+    -fx-padding: 0 0 0 10px;
+}
+
+.table-view .table-cell {
+    -fx-padding: 6px 10px;
+    -fx-alignment: CENTER-LEFT;
+}
+
+/* Kolom angka: tambahkan styleClass "column-numeric" di TableColumn */
+.table-view .column-header.column-numeric .label {
+    -fx-alignment: CENTER-RIGHT;
+    -fx-padding: 0 10px 0 0;
+}
+
+.table-view .table-cell.column-numeric {
+    -fx-alignment: CENTER-RIGHT;
+}
+
+.table-row-cell {
+    -fx-background-color: rgba(255, 255, 255, 0.62);
+    -fx-border-color: transparent transparent rgba(216, 226, 219, 0.6) transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: rgba(246, 249, 247, 0.72);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgba(93, 153, 120, 0.2);
+}
+
+.table-row-cell:selected .table-cell {
+    -fx-text-fill: #1d3d30;
+}
+
+/* ---------- Badge status (dipasang lewat cell factory) ---------- */
+.badge {
+    -fx-padding: 2px 10px;
+    -fx-background-radius: 20px;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.badge-active {
+    -fx-background-color: rgba(52, 137, 104, 0.15);
+    -fx-text-fill: #247455;
+}
+
+.badge-inactive {
+    -fx-background-color: rgba(113, 128, 120, 0.18);
+    -fx-text-fill: #5f6f66;
+}

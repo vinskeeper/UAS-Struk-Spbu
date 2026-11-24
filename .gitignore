@@ -1,0 +1,5 @@
+/bin/
+/.vscode-java-bin/
+/database/local.properties
+*.class
+*.dump

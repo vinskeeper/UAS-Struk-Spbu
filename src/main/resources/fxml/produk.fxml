@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox spacing="14" styleClass="page-root" stylesheets="@../css/style.css"
+      xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.ProdukController">
+    <padding><Insets top="24" right="26" bottom="24" left="26"/></padding>
+    <Label text="Data Produk" styleClass="page-title"/>
+    <Label text="Kelola harga dan ketersediaan BBM. Produk yang sudah dipakai tetap tersimpan di riwayat." styleClass="page-subtitle" wrapText="true"/>
+    <VBox spacing="12" styleClass="content-card">
+        <padding><Insets top="18" right="20" bottom="18" left="20"/></padding>
+        <Label fx:id="selectionLabel" text="Pilih produk pada tabel untuk mengubahnya."/>
+        <GridPane hgap="12" vgap="10">
+            <Label text="Nama" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="nameField" promptText="Nama produk" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Jenis" styleClass="field-label" GridPane.rowIndex="0" GridPane.columnIndex="2"/>
+            <ComboBox fx:id="typeBox" GridPane.rowIndex="0" GridPane.columnIndex="3"/>
+            <Label text="Harga/liter" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextField fx:id="priceField" promptText="Harga per liter" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label fx:id="ratingLabel" text="Oktan" styleClass="field-label" GridPane.rowIndex="1" GridPane.columnIndex="2"/>
+            <TextField fx:id="ratingField" promptText="Nilai oktan" GridPane.rowIndex="1" GridPane.columnIndex="3"/>
+        </GridPane>
+        <HBox spacing="8">
+            <Button fx:id="saveButton" text="Simpan Produk" onAction="#save" styleClass="button-primary"/>
+            <Button text="Bersihkan Form" onAction="#clear" styleClass="button-secondary"/>
+            <Button text="Nonaktifkan" onAction="#deactivate" styleClass="button-secondary"/>
+            <Button text="Aktifkan Kembali" onAction="#activate" styleClass="button-secondary"/>
+            <Button text="Hapus Produk" onAction="#delete" styleClass="button-secondary, button-danger"/>
+        </HBox>
+    </VBox>
+    <TableView fx:id="productTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Nama" prefWidth="220"/>
+            <TableColumn fx:id="typeColumn" text="Jenis" prefWidth="140"/>
+            <TableColumn fx:id="priceColumn" text="Harga/Liter" prefWidth="160"/>
+            <TableColumn fx:id="ratingColumn" text="Oktan / Cetane" prefWidth="160"/>
+            <TableColumn fx:id="statusColumn" text="Status" prefWidth="120"/>
+        </columns>
+    </TableView>
+</VBox>
