@@ -18,7 +18,7 @@
                 <Label text="POM BENSIN" styleClass="brand-title"/>
                 <Label text="Sistem Transaksi BBM" styleClass="brand-subtitle"/>
                 <Separator styleClass="sidebar-separator"/>
-                <Button fx:id="peopleButton" text="Petugas" maxWidth="Infinity" onAction="#showPeople" styleClass="nav-button"/>
+                <Button fx:id="peopleButton" text="Users" maxWidth="Infinity" onAction="#showPeople" styleClass="nav-button"/>
                 <Button fx:id="productsButton" text="Produk BBM" maxWidth="Infinity" onAction="#showProduk" styleClass="nav-button"/>
                 <Button text="Transaksi" maxWidth="Infinity" onAction="#showTransaksi" styleClass="nav-button"/>
                 <Region VBox.vgrow="ALWAYS"/>
