@@ -486,7 +486,7 @@ public class DashboardController {
     private String readableDatabaseError(SQLException e) {
         String message = e.getMessage() == null ? "Kesalahan database." : e.getMessage();
         if (message.contains("spbu_") || message.contains("does not exist"))
-            return "Tabel SPBU belum tersedia. Jalankan database/pombensin_schema.sql pada database pombensin.\n\n" + message;
+            return "Struktur database belum lengkap. Restore backup pombensin.sql ke database pombensin sesuai petunjuk di README.md.\n\n" + message;
         if (message.contains("duplicate key") || message.contains("unique constraint"))
             return "Nama produk tersebut sudah digunakan. Pilih nama lain.\n\n" + message;
         return message;
